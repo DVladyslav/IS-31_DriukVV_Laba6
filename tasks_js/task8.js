@@ -1,10 +1,14 @@
-function Storage(initialItems){
+// Конструктор Storage для створення об'єкта сховища з початковим набором елементів
+function Storage(initialItems) {
     this.items = initialItems;
 
-    this.getItems = function(){
+    // Метод для отримання всіх елементів зі сховища
+    this.getItems = function () {
         return this.items;
     };
-    this.addItems = function(item){
+
+    // Метод для додавання нового елемента до сховища
+    this.addItem = function (item) {
         if (!this.items.includes(item)) {
             this.items.push(item);
             console.log(`Товар "${item}" успішно додано.`);
@@ -12,7 +16,9 @@ function Storage(initialItems){
             console.log(`Товар "${item}" вже існує.`);
         }
     };
-    this.removeItem = function(item){
+
+    // Метод для видалення елемента зі сховища
+    this.removeItem = function (item) {
         const itemIndex = this.items.indexOf(item);
         if (itemIndex !== -1) {
             this.items.splice(itemIndex, 1);
@@ -20,22 +26,26 @@ function Storage(initialItems){
         } else {
             console.log(`Товар "${item}" не знайдено.`);
         }
-    }; 
+    };
 }
 
+// Масив початкових елементів
 const arr = ["apple", "banana", "mango"]
 const storage = new Storage(arr);
 
+// Функція для виклику методу getItems та виведення списку елементів
 function callFunction1() {
     const arrayItems = storage.getItems();
     console.log(arrayItems);
 }
+// Функція для виклику методу addItems, додавання нового елемента та виведення списку
 function callFunction2(item) {
     if (item) {
-        storage.addItems(item);
+        storage.addItem(item);
     }
     console.log(storage.getItems());
 }
+// Функція для виклику методу removeItem, видалення елемента та виведення списку
 function callFunction3(item) {
     if (item) {
         storage.removeItem(item);
